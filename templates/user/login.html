@@ -1,0 +1,25 @@
+{% extends "/user/base.html" %}
+
+{% block title %}
+Đăng nhập
+{% endblock %}
+
+{% block content %}
+  <div class="wrapper">
+    <h2>Đăng nhập</h2>
+    <form id="form" method="POST">
+      <div class="form-control">
+        <input type="text" id="phone_number" name="phone_number" placeholder="Số điện thoại" required>
+      </div>
+      <div class="form-control">
+        <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+      </div>
+      <div class="form-control buttonn">
+        <input type="Submit" value="Đăng nhập">
+      </div>
+      <div class="text">
+        <h3>Chưa có tài khoản? <a href="/register">Đăng ký</a></h3>
+      </div>
+    </form>
+  </div>
+{% endblock %}

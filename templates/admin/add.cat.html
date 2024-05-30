@@ -1,0 +1,46 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}
+Add Category
+{% endblock %}
+
+{% block content %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Table</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/category">Category</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-12" id="add-cart">
+                <div class="card" >
+                    <div class="card-header-add">
+                        <h2>Add new category</h2>
+                    </div>
+                    <form action="{{ url_for('add_type') }}" method="POST" id="add-content">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name" required><br><br>
+                        <label for="picture">Picture</label><br>
+                        <input type="text" id="picture" name="picture" required><br><br>
+
+                        <button type="submit" class="edit-button" id="but-ton">Save</button>
+                        <button class="edit-button">
+                            <a href="/admin/category" id="text-">Cancel</a>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

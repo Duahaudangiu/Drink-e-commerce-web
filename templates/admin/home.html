@@ -1,0 +1,66 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}
+Admin
+{% endblock %}
+
+{% block content %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="">Navigation</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+              <div class="row">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="block-card"><p class="p">Tổng doanh thu ngày</p>
+                                <span style="color:red" class="p">{{ total_revenue_today | default('0') }} VNĐ</span></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block-card"><p class="p">Tổng doanh thu tháng</p>
+                                <span style="color:red" class="p">{{ total_revenue_month | default('0') }}00 VNĐ</span></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block-card"><p class="p">Tổng doanh thu năm</p>
+                                <span style="color:red" class="p">{{ total_revenue_year | default('0') }}00 VNĐ</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="block-card"><p class="p">Tổng đơn hàng</p>
+                                <span style="color:red" class="p">{{ total_orders }}</span></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block-card"><p class="p">Tổng người dùng</p>
+                                <span style="color:red" class="p">{{ total_users }}</span></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block-card"><p class="p">Tổng sản phẩm</p>
+                                <span style="color:red" class="p">{{ total_products }}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}

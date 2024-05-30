@@ -1,0 +1,20 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+Đặt hàng
+{% endblock %}
+
+{% block content %}
+<div class="image-success">
+    <img src="/static/images/success.png" alt="success">
+</div>
+<div class="notification-container">
+    <h2>Đặt hàng thành công!</h2>
+    <p>Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ xử lý đơn hàng của bạn sớm nhất có thể.</p>
+    <div class="buttons">
+        <a href="/order_history/" class="button">Xem đơn hàng</a>
+        <a href="/product/" class="button">Tiếp tục mua hàng</a>
+        <a href="/" class="button">Quay lại trang chủ</a>
+    </div>
+</div>
+{% endblock %}

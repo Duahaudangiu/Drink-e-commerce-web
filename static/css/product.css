@@ -1,0 +1,753 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.but{
+  margin-top: clamp(12px, 0.01em, -15px);
+}
+.slide {
+  display: flex;
+  width: 85%;
+  margin: auto;
+  justify-content: center;
+  position: relative;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.slide .slide-content {
+  position: absolute;
+  margin: 0 5%;
+  padding-top: 14%;
+}
+.slide .slide-content .slide-title{
+  font-family: 'Montserrat',sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 6vw, 96px);
+  color: #0C713D;
+  text-shadow: -4px 0px 0px #000000;
+}
+.slide .slide-content .slide-subtitle{
+  font-family: 'Montserrat',sans-serif;
+  font-weight: 300;
+  font-size: clamp(4px, 1.45vw, 20px);
+  line-height: clamp(8px, 2vw, 30px);
+  text-align: justify;
+  color: #0C713D;
+  margin-right: 48%;
+}
+
+.section33 {
+  width: 100%;
+  /* background: #E3EDC9; */
+  margin: auto;
+}
+/* navigate phan loai */
+.section33 section {
+  display: flex;
+  width: 75%;
+  margin: auto;
+  justify-content: space-evenly;
+}
+.section33 section .nav-content{
+  display: flex;
+  justify-content: center;
+}
+.section33 section .icon-box {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  z-index: 1;
+}
+.section33 section .thucuong{
+  background-color: #a0D05C;
+  padding: 10px 10px 0 0;
+}
+.section33 section .thucuong h2{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 2.5vw, 30px);
+  color: #0C713D;
+  text-shadow: 2px 0px 0px #000;
+}
+.section33 section .anvat h2, .banh h2, .donggoi h2{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: clamp(12px, 2.25vw, 26px);
+}
+.section33 .icon-box img{
+  margin: auto 5px;
+  /* transform: scale(0.95); */
+}
+.section33 hr {
+  margin: auto;
+  width: 85%;
+  border: none;
+  border-top: 3px dashed #000;
+}
+
+.main-content{
+  display: flex;
+}
+.main-content section {
+  flex: 28%;
+  margin-top: 8%;
+}
+.filterdrink{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.drink-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(12px, 3.25vw, 36px);
+  color: #0C713D;
+  text-shadow: -3px 0px 0px #000;
+  margin-bottom: 40px;
+}
+.filterdrink-contents{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 16px;
+}
+.filterdrink-content{
+  display: flex;
+  align-items: center;
+  border: 1.5px dashed #000;
+  width: clamp(150px, 18vw, 272.25px);
+  height: 44px;
+  border-radius: 28px;
+  padding-left: 2px;
+}
+.filterdrink-content:hover{
+    background-color: #fff;
+}
+.filterdrink-content .filter-content{
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: clamp(10px, 1.6vw, 14px);
+}
+section hr {
+display: none;
+}
+main{
+  flex: 72%;
+  margin: 8% 0;
+  justify-content: center;
+}
+.search-container {
+    margin-bottom: 20px;
+}
+.search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.search-button {
+    padding: 10px;
+    background-color: #0C713D;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sorting {
+  background-color: rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 2px;
+}
+.home-filter__label {
+  color: #555555;
+  margin-right: 16px;
+}
+.sorting-btn {
+  min-width: 90px;
+  margin-right: 12px;
+  background-color:#fff;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 12px;
+  padding: 5px;
+  color: #000;
+}
+.select-input {
+  min-width: 200px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid #000;
+  border-radius: 12px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.select-input__icon {
+  color: rgb(131, 131, 131);
+  position: relative;
+  top: 1px;
+}
+.select-input:hover .select-input__list{
+  display: block;
+}
+.select-input__list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 33px;
+  border: 1px solid #000;
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 10px 16px;
+  list-style: none;
+  display: none;
+  animation: fadeIn ease-in 0.2s;
+  z-index: 1;
+}
+.select-input__link {
+  text-decoration: none;
+  color: var(--text-color);
+  display: block;
+  padding: 8px 0;
+}
+.sorting-btn:hover, .select-input__link:hover{
+  color: #A0D05C;
+  text-decoration: none;
+}
+.drink-products{
+  padding: 0 5px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(32px, 6vw, 50px);
+  row-gap:clamp(32px, 5vw, 54px);
+  margin-top: 5%;
+}
+.drink-item{
+  width: clamp(180px, 24vw, 217px);
+  height: clamp(300px, 28vw, 330px);
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(1px, 1vw, 3px);
+  text-align: center;
+  border: 1px solid #E1EDD0;
+  border-radius: 108px;
+}
+.drink-product:hover .drink-item{
+  background-color: #a0D05C;
+}
+.item-image{
+  margin-top: 10%;
+}
+.item-name{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: clamp(16px, 1.75vw, 18px);
+  letter-spacing: 0.05em;
+  color: #0C713D;
+}
+.price{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 1.75vw, 18px);
+}
+.xemthem{
+  margin: 100px auto;
+  width: 147px;
+  height: 49px;
+  background: #0C713D;
+  border: 2px dashed #A0D05C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #fff;
+}
+.products-details {
+  display: flex;
+  column-gap: 80px;
+  width: 80%;
+  margin: 100px auto;
+}
+.products-details .image-box img{
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  justify-content: center;
+  padding: 30px 0;
+}
+.products-details .image-box .sub-img{
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 12px);
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+.products-details .main-details{
+    display: flex;
+    flex-direction: column;
+    margin-left: clamp(12px, 4vw, 30px);
+    row-gap: 10px;
+}
+.products-details .main-details .name{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: clamp(12px, 2.5vw, 28px);
+    color: #0C713D;
+}
+.products-details .main-details hr{
+    border: 1px solid #0C713D;;
+}
+.products-details .main-details .count{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+.products-details .main-details hr{
+    margin: 0 0 10px 0;
+}
+.products-details .main-details .item-info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+.products-details .main-details .item-info select,
+.products-details .main-details .item-info input {
+    width: 100%;
+    align: right;
+}
+.products-details .main-details .item-info td{
+    padding: 8px 0;
+}
+.products-details .main-details .item-info label{
+    font-weight: 500;
+    font-size: clamp(12px, 2.5vw, 16px);
+    padding-right: 50px;
+}
+.products-details .main-details .item-info select, input, button {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+#total_price{
+    font-weight: 600;
+    font-size: clamp(12px, 2.5vw, 20px);
+}
+
+.products-details .main-details #button_add{
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  font-size: clamp(6px, 1vw, 16px);
+  border: 2px solid ;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.products-details .main-details #button_add:hover{
+  background-color: black;
+  color:white;
+}
+
+@media screen and (min-width:650px) and (max-width:1240px){
+  .section33 .icon-box img{
+    transform: scale(0.85);
+  }
+  .filterdrink-icon{
+    transform: scale(0.85);
+  }
+  .item-image{
+    transform: scale(0.85);
+  }
+  .drink-products{
+    justify-content: center;
+  }
+}
+@media screen and (max-width:650px){
+  .section33 section {
+    width: 80%;
+    flex-direction: column;
+  }
+  .section33 hr {
+    width: 80%;
+  }
+  .section33 .icon-box img{
+    transform: scale(0.65);
+  }
+  .main-content{
+    flex-direction: column;
+  }
+  section {
+    width: 100%;
+  }
+  main{
+    width: 100%;
+  }
+  .drink-title {
+    display: none;
+  }
+  .filterdrink-icon{
+    transform: scale(0.75);
+  }
+  .filterdrink-contents{
+    margin: auto 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 5px;
+  }
+  .filterdrink-content{
+    width: 130px;
+    height: 40px;
+  }
+  section hr {
+    display: flex;
+    margin: 20px auto;
+    width: 80%;
+    border-top: 2px dashed #000;
+  }
+  .item-image{
+    transform: scale(0.75);
+  }
+  .drink-products{
+    justify-content: center;
+  }
+}
+
+
+.cart-title {
+    background-color: #fff;
+    padding: 70px 150px;
+}
+.cart-title h1{
+    font-weight: 700;
+    font-size: clamp(24px, 6vw, 56px);
+}
+.cart-title p{
+    font-weight: 400;
+    font-size: clamp(16px, 6vw, 24px);
+    margin-top: 5px;
+}
+.cart {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 50px auto;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.cart th, .cart td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+.cart .product{
+    text-align: left;
+}
+.cart th {
+    background-color: #A0D05C;
+    color: black;
+    font-weight: 500;
+    padding: 15px 0;
+}
+
+.cart img {
+    max-width: 100px;
+    max-height: 140px;
+}
+
+#total {
+    font-size: 1.2em;
+    text-align: right;
+}
+
+.delete{
+    width: 50px;
+    background-color: #ff4b2b;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button {
+    display: flex;
+    width: 70%;
+    margin: 4% auto;
+    justify-content: right;
+    align-items:center;
+    column-gap: 20px;
+}
+.button input{
+    min-width: 160px;
+    color: white;
+    border-radius: 18px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+.button #continue-button{
+    background-color: #FAF7EE;
+    color: black;
+    font-weight: 500;
+    width: 200px;
+}
+.button #order-button{
+    background-color: #0C713D;
+    font-weight: 600;
+}
+.button #continue-button:hover{
+    background-color: #000;
+    color: white;
+}
+.button #order-button:hover{
+    background-color: #000;
+    color: white;
+}
+.main-content-tt {
+  display: flex;
+  justify-content: space-between;
+  height: 900px;
+  padding: 20px;
+}
+.first-content {
+  height: 100%;
+  width: 65%;
+  padding: 5% 5%;
+}
+.first-content-1 {
+  height: 100%;
+  width: 100%;
+}
+.second-content {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  margin-left: 8%;
+  margin-top:5%;
+}
+.second-content-1 {
+    border: 2px solid;
+    width:80%;
+    margin-bottom: 50px;
+}
+.second-content-2 {
+    border: 2px solid;
+    width:80%;
+}
+.head1{
+  background: #A0D05C;
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  border: 2px solid #000;
+  font-weight: 600;
+  font-size: clamp(12px, 2vw, 18px);
+  color: #000;
+}
+#orderForm {
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    margin: 50px auto;
+}
+.row2{
+  display:flex;
+  justify-content: space-between;
+}
+.row2:nth-child(4){
+  height: 130px;
+}
+.row2 .input-group{
+  flex-basis:48%;
+}
+.row2 .input-group2{
+  flex-basis:100%;
+}
+.input-group{
+  margin-bottom: 30px;
+}
+.row2 input {
+  width:100%;
+  padding:20px;
+  outline:0;
+  border: none;
+  border-radius: 27px;
+  background: #fff;
+  font-size: clamp(11px, 3vw, 16px);
+  border: 2px solid #fff;
+  height: 55px;
+}
+.row2 .input-group select{
+  width:100%;
+  padding:10px;
+  outline:0;
+  border: none;
+  border-radius: 27px;
+  background: #fff;
+  font-size: clamp(11px, 2vw, 16px);
+  height: 53px;
+  border: 2px solid #fff;
+}
+.row2 .input-group label{
+    left:15px;
+    top:10px;
+    padding:3px;
+    color: black;
+    cursor:text;
+    font-size: clamp(11px, 2vw, 16px);
+}
+.row2 .input-group2 label{
+    left:15px;
+    top:10px;
+    padding:3px;
+    color: black;
+    cursor:text;
+    font-size: clamp(11px, 2vw, 16px);
+}
+.row2 .input-group2 textarea{
+  width: 100%;
+  padding:20px;
+  outline:0;
+  border: 2px solid #fff;
+  border-radius: 27px;
+  background-color: #fff;
+  font-size: clamp(11px, 2vw, 16px);
+  height:100px ;
+}
+sorting a{
+
+}
+#orderForm .a {
+  padding: 15px;
+  background-color: #FAF7EE;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  border: 2px solid #000;
+  font-weight: 600;
+  font-size: clamp(12px, 2vw, 18px);
+  color: #000;
+}
+#orderForm .a:hover{
+    background-color: #000;
+    color: #fff;
+}
+.head2{
+  padding:10px;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: clamp(14px, 2vw, 18px);
+  color: black;
+}
+.daugachngang{
+    height: 0.7px;
+    width: 90%;
+    background-color: black;
+    margin: 9% 5% 9% 5% ;
+}
+.se-content1{
+    margin-top:9%;
+}
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: clamp(14px, 2vw, 16px);
+    margin: 9% 5% 9% 5% ;
+}
+.product-info .feature{
+    font-size: clamp(12px, 2vw, 15px);
+    color:#00AA00;
+}
+.image-success img{
+    display: flex;
+    width: 80px;
+    margin: auto;
+    margin-top: 50px;
+}
+.notification-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin: 2% auto;
+    margin-bottom: 80px;
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+}
+.notification-container h2 {
+    margin-top: 0;
+}
+.notification-container .buttons{
+    display: flex;
+    column-gap: 10px;
+}
+.notification-container .button {
+    background-color: #4caf50;
+    color: white;
+    border: 1px solid #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 15px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.notification-container .button:hover {
+    background-color: #ffffff;
+    color: #4caf50;
+    border: 1px solid #4caf50;
+}
+
+.product-list2 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0% 12% 15% 12%;
+}
+.drink-item2{
+  width: clamp(180px, 24vw, 217px);
+  height: clamp(300px, 28vw, 330px);
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(1px, 1vw, 3px);
+  text-align: center;
+  border: 1px solid #E1EDD0;
+  border-radius: 108px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+.drink-item2:hover {
+    background-color: #a0D05C;
+    transition: background-color 0.3s ease;
+}
+.drink-item:hover {
+    background-color: #a0D05C;
+    transition: background-color 0.3s ease;
+}
+.related-products-title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #0C713D;
+    text-shadow: -1px 0px 0px #000;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(12, 113, 61, 0.5);
+    width: 80%;
+    margin: 3% auto;
+    padding: 20px 0;
+}

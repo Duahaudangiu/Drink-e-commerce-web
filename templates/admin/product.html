@@ -1,0 +1,85 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}
+Product
+{% endblock %}
+
+{% block content %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Table</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Product Table</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-12" id="block">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>List of Products</h2>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <td> <button class="add-button">
+                            <a href="/add" id="text">Add new product </a>
+                        </button>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                        <form method="POST">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="first-row">
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Picture</th>
+                                        <th>Price</th>
+                                        <th>Sell_count</th>
+                                        <th>Date_added</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for product in data %}
+                                    <tr>
+                                        <td>{{ product['id'] }}</td>
+                                        <td>{{ product['name'] }}</td>
+                                        <td>{{ get_product_type_name(product['model']) }}</td>
+                                        <td>{{ product['picture'] }}</td>
+                                        <td>{{ product['price'] }}</td>
+                                        <td>{{ product['sell_count'] }}</td>
+                                        <td>{{ product['date_added'] }}</td>
+                                        <td>
+                                            <button class="edit-button">
+                                                <a href="/edit/{{ product['id'] }}" id="text-">Edit</a>
+                                                </button>
+                                        </td>
+                                        <td>
+                                            <form id = "delete-form-{{ product['id']}}" action="/delete/{{ product['id'] }}" method="POST" style="display:inline;">
+                                                <button type="submit" class="delete-button" onclick="confirmDelete({{ product['id']}})">Delete</button>
+                                            </form>
+                                         </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

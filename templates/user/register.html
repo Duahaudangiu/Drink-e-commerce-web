@@ -1,0 +1,59 @@
+{% extends "/user/base.html" %}
+
+{% block title %}
+Đăng ký
+{% endblock %}
+
+{% block content %}
+  <div class="wrapper">
+    <h2>Đăng ký</h2>
+    {{ form.hidden_tag() }}
+    <form id="form" method="POST" >
+      {{ form.hidden_tag() }}
+      <div class="form-control">
+        <label for="name">Họ và tên</label>
+        <input type="text" id="name" name="name" placeholder="Họ và tên" required>
+         {% if form.name.errors %}
+          <p style="color: red;">{{ form.name.errors }}</p>
+        {% endif %}
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Email" required>
+        {% if form.email.errors %}
+          <p style="color: red;">{{ form.email.errors }}</p>
+        {% endif %}
+      </div>
+      <div class="form-control">
+        <label for="phone_number">Số điện thoại</label>
+        <input type="text" id="phone_number" name="phone_number" placeholder="Số điện thoại" required>
+        {% if form.phone_number.errors %}
+          <p style="color: red;">{{ form.phone_number.errors }}</p>
+        {% endif %}
+      </div>
+      <div class="form-control">
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+        {% if form.password.errors %}
+          <p style="color: red;">{{ form.password.errors }}</p>
+        {% endif %}
+      </div>
+      <div class="form-control">
+        <label for="confirm_password">Xác nhận mật khẩu</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Xác nhận mật khẩu" required>
+        {% if form.confirm_password.errors %}
+          <p style="color: red;">{{ form.confirm_password.errors }}</p>
+        {% endif %}
+      </div>
+      <div class="form-control buttonn">
+        <input type="Submit" value="Đăng ký">
+      </div>
+      <div class="text">
+        <h3>Đã có tài khoản? <a href="/login">Đăng nhập</a></h3>
+      </div>
+    </form>
+  </div>
+{% endblock %}

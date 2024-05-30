@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/styles.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script>
+        function removeFlashMessage() {
+            $(".alert").remove();
+        }
+        $(document).ready(function() {
+            if ($(".alert").length) {
+                setTimeout(removeFlashMessage, 3000);
+            }
+        });
+    </script>
+	<script>
+    function confirmDelete(id) {
+        var r = confirm("Are you sure you want to delete?");
+        if (r == true) {
+            document.getElementById("delete-form-" + id).submit();
+        } else {
+            // Do nothing
+        }
+    }
+	</script>
+</head>
+<body>
+	<nav class="pcoded-navbar  ">
+		<div class="navbar-wrapper">
+			<div class="navbar-content scroll-div " >
+				<div class="">
+					<div class="main-menu-header">
+					</div>
+				</div>
+				<ul class="nav pcoded-inner-navbar ">
+					<li class="nav-item pcoded-menu-caption">
+						<label>Navigation</label>
+					</li>
+					<li class="nav-item">
+					    <a href="/admin/" class="nav-link "><span class="pcoded-micon"></span><span class="pcoded-mtext">Dashboard</span></a>
+					</li>
+					<li class="nav-item pcoded-menu-caption">
+					    <label>Table</label>
+					</li>
+					<li class="nav-item">
+					    <a href="/admin/category" class="nav-link "><span class="pcoded-micon"></span><span class="pcoded-mtext">Category</span></a>
+					</li>
+					<li class="nav-item">
+					    <a href="/admin/product" class="nav-link "><span class="pcoded-micon"></span><span class="pcoded-mtext">Product</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="/admin/users" class="nav-link "><span class="pcoded-micon"></span><span class="pcoded-mtext">User</span></a>
+					</li>
+                    <li class="nav-item">
+					    <a href="/admin/orders" class="nav-link "><span class="pcoded-micon"></span><span class="pcoded-mtext">Order</span></a>
+					</li>
+			</ul>
+		</div>
+		</div>
+	</nav>
+
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
+        <div class="logo"><a href="#"><img src="/static/images/logo1.svg" alt="" id="logo"></a></div>
+	</header>
+	<div class="message-container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+
+{% block content %}
+ {% endblock %}
+
+
+</body>
+</html>

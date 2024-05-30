@@ -1,0 +1,139 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+Đặt hàng
+{% endblock %}
+
+{% block content %}
+  <section class="cart-title">
+    <div class="container">
+        <h1>Thanh toán</h1>
+        <p>Hiện đang có {{ rows }} sản phẩm trong danh sách thanh toán.</p>
+    </div>
+  </section>
+  <div class="main-content-tt">
+    <div class="first-content">
+      <div class="first-content-1">
+        <div class="head1">THÔNG TIN NHẬN HÀNG</div>
+        <form action="/submit_order" method="POST" id="orderForm" onsubmit="return validateOrderForm()">
+            <div class="row2">
+                <div class="input-group">
+                    <label for="name">Họ và tên <span style="color:red">*</span></label>
+                    <input type="text" id ="name" name ="name" value="{{ user_info.name }}" required>
+                </div>
+                <div class="input-group">
+                    <label for="number">Số điện thoại <span style="color:red">*</span></label>
+                    <input type="tel" id ="number" name = "number" value="{{ user_info.phone_number }}" required >
+                </div>
+            </div>
+            <div class="row2">
+                <div class="input-group">
+                    <label for="name">Tỉnh/Thành phố <span style="color:red">*</span></label>
+                    <select id="dinoselect" name="dinoselect">
+                        <option></option>
+                        <option>Hà Nội</option>
+                        <option>TP.Hồ Chí Minh</option>
+                        <option>Bắc Ninh</option>
+                        <option>Đà Nẵng</option>
+                        <option>Lào Cai</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="name">Quận/Huyện <span style="color:red">*</span></label>
+                    <select id="dinoselect2" name="dinoselect2">
+                            <option> <label for="dinoselect2"> </label></option>
+                            <option>Hai Bà Trưng</option>
+                            <option>Đống Đa</option>
+                            <option>Thanh Xuân</option>
+                            <option>Long Biên</option>
+                            <option>Nguyễn Trãi</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row2">
+                <div class="input-group">
+                    <label for="name">Phường/Xã <span style="color:red">*</span></label>
+                    <select id="dinoselect3" name="dinoselect3">
+                        <option> <label for="dinoselect3"> </label></option>
+                        <option>Hà Nội</option>
+                        <option>TP.Hồ Chí Minh</option>
+                        <option>Bắc Ninh</option>
+                        <option>Đà Nẵng</option>
+                        <option>Lào Cai</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="name">Tên đường, Số nhà <span style="color:red">*</span></label>
+                     <input type="text" id ="address" name ="address" required>
+                </div>
+            </div>
+            <div class="row2">
+                <div class="input-group2">
+                    <label for="message">Ghi chú đơn hàng <span style="color:red">*</span></label>
+                    <textarea name="message" id="message"  required></textarea>
+                </div>
+            </div>
+            <div class="row2">
+                <div class="input-group">
+                    <label for="name">Phương thức thanh toán <span style="color:red">*</span></label>
+                    <select id="dinoselect5" name="dinoselect5">
+                            <option> <label for="dinoselect5"></label></option>
+                            <option>Thanh toán khi nhận hàng</option>
+                            <option>Thanh toán qua ngân hàng</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="a">ĐẶT HÀNG</button>
+        </form>
+      </div>
+    </div>
+    <div class="second-content">
+      <div class="second-content-1">
+        <div class="head2">CHI TIẾT ĐƠN HÀNG</div>
+        <div class="se-content-1">
+        {% for cart_item in cart_items %}
+        <div class="se-content1">
+            <div class="product-info">
+                <div class="info1"><td>{{ cart_item.name }}</td><br>
+                <div class="feature">{{ cart_item['size'] }}, {{ cart_item['sugar_level'] }}, {{ cart_item['ice_place'] }}</div></div>
+                <div class="info2">{{ cart_item.quantity }}</div>
+                <div class="info3">{{ cart_item.total_price }}00₫</div>
+            </div>
+        <div class="daugachngang"></div>
+        </div>
+        {% endfor %}
+    </div>
+
+      </div>
+
+    <div class="second-content-1">
+        <div class="head2">CHI TIẾT THANH TOÁN</div>
+        <div class="se-content-1">
+            <div class="se-content1">
+                <div class="product-info">
+                    <div class="info1">Tổng tiền hàng</div>
+                    <div class="info2">{{ total_cart_value }}00₫</div>
+                </div>
+                <div class="daugachngang"></div>
+            </div>
+
+            <div class="se-content1">
+                <div class="product-info">
+                    <div class="info1">Phí vận chuyển</div>
+                    <div class="info2">25.000đ</div>
+                </div>
+                <div class="daugachngang"></div>
+            </div>
+
+            <div class="se-content1">
+                <div class="product-info">
+                    <div class="info1">Tổng tiền thanh toán</div>
+                    <div class="info2"><span style="color:red; font-weight: 600;">{{ total_cart_value + 25 }}00₫</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </div>
+{% endblock %}

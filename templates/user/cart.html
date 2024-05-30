@@ -1,0 +1,42 @@
+{% extends "/user/base.html" %}
+
+{% block title %}
+Giỏ hàng
+{% endblock %}
+
+{% block content %}
+    <section class="cart-title">
+        <div class="container">
+            <h1>Giỏ hàng</h1>
+            <p>Hiện đang có {{ rows }} sản phẩm trong giỏ hàng</p>
+        </div>
+    </section>
+    <table class="cart">
+        <tr>
+            <th></th>
+            <th class="product">SẢN PHẨM</th>
+            <th>SỐ LƯỢNG</th>
+            <th>THÀNH TIỀN</th>
+            <th>XÓA</th>
+        </tr>
+        {% for cart_item in carts %}
+        <tr>
+            <td><a href="/product/details/{{ cart_item['product_id'] }}"><img class="product-img" src="{{ cart_item['picture'] }}" alt="cart_item['picture']"></a></td>
+            <td class="product"><a href="/product/details/{{ cart_item['product_id'] }}"><h4>{{ cart_item['name'] }}</h4></a>
+                <br>{{ cart_item['size'] }}, {{ cart_item['sugar_level'] }}, {{ cart_item['ice_place'] }}</td>
+            <td>{{ cart_item['quantity'] }}</td>
+            <td>{{ cart_item['total_price'] }}00₫</td>
+            <td><form action="{{ url_for('update_cart') }}" method="POST"><input type="submit" name="delete-{{ cart_item['id'] }}" value="Xóa" class="delete"></form></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td> <td></td> <td>Tổng:</td> <td id="total_price">{{ total_cart_value }}00₫</td> <td></td>
+        </tr>
+    </table>
+    <div class="button">
+        <a href="/product/" type="submit"><input type="submit" value="Tiếp tục mua hàng" id="continue-button"></a>
+        <a href="/thanhtoan" type="submit">
+            <input type="submit" value="ĐẶT HÀNG" id="order-button">
+        </a>
+    </div>
+{% endblock %}

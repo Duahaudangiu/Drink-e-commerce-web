@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/static/css/swiper-bundle.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/css/navbar_footer.css">
+    <link rel="stylesheet" href="/static/css/trangchu.css">
+    <link rel="stylesheet" href="/static/css/cauchuyen.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/tracaphechung.css">
+    <link rel="stylesheet" href="/static/css/caphe.css">
+    <link rel="stylesheet" href="/static/css/tra.css">
+    <link rel="stylesheet" href="/static/css/product.css">
+    <link rel="stylesheet" href="/static/css/order_history.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome">
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/static/js/swiper-bundle.min.js"></script>
+    <script src="/static/js/navbar_footer.js"></script>
+    <script src="/static/js/trangchu.js" defer></script>
+    <script src="/static/js/navbar_footer.js"></script>
+    <script src="/static/js/product.js"></script>
+    <script>
+        function removeFlashMessage() {
+            $(".alert").remove();
+        }
+        $(document).ready(function() {
+            if ($(".alert").length) {
+                setTimeout(removeFlashMessage, 3000);
+            }
+        });
+    </script>
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <nav>
+      <div class="navbar">
+        <i class='bx bx-menu'></i>
+        <div class="logo"><a href="#"><img src="/static/images/logo1.svg" alt=""></a></div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="/">TRANG CHỦ</a></li>
+          <li><a href="/cauchuyen">CÂU CHUYỆN</a></li>
+          <li>
+            <a href="/tracaphechung">TRÀ & CÀ PHÊ</a>
+            <i class='bx bxs-chevron-down tracaphe-arrow arrow'></i>
+            <ul class="tracaphe-sub-menu sub-menu">
+              <li><a href="/tra">TRÀ</a></li>
+              <li><a href="/caphe">CÀ PHÊ</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/product">SẢN PHẨM</a>
+            <i class='bx bxs-chevron-down sp-arrow arrow'></i>
+            <ul class="sp-sub-menu sub-menu">
+              <li><a href="/product">THỨC UỐNG</a></li>
+              <li><a href="#">ĂN VẶT</a></li>
+              <li><a href="#">BÁNH</a></li>
+              <li><a href="#">ĐÓNG GÓI</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">BẢNG TIN</a>
+            <i class='bx bxs-chevron-down bangtin-arrow arrow'></i>
+            <ul class="bangtin-sub-menu sub-menu">
+              <li><a href="https://phuclong.com.vn/khuyen-mai">TIN TỨC</a></li>
+              <li><a href="https://phuclong.com.vn/tuyen-dung">TUYỂN DỤNG</a></li>
+            </ul>
+          </li>
+          <li><a href="/contact">LIÊN HỆ</a></li>
+        </ul>
+      </div>
+      {% if 'current_user' not in session %}
+        <div class="login-section">
+          <div class="order-button">
+            <a href="/login">ĐĂNG NHẬP</a>
+          </div>
+        </div>
+      {% else %}
+        <div class="user-section" id="userSection">
+          <div class="hello">Xin chào, {{ session['current_user']['name'] }}</div>
+            <img src="/static/images/avatar.png" alt="Avatar" id="avt" onclick="toggleUserDropdown()">
+          <div class="user-dropdown" id="userDropdown">
+            <ul>
+              <li><a href="/profile">Tài khoản</a></li>
+              <li><a href="/order_history/">Đơn hàng</a></li>
+              <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+        <div class="icon-cart">
+          <a href="/cart"><img src="/static/images/cart.svg" alt="" width="40px"></a>
+          <p class="items-count">{{ session['cart'] }}</p>
+        </div>
+      </div>
+    </nav>
+    <div class="message-container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+    {% block content %}{% endblock %}
+   <footer class="footer">
+    <div class="truoc">
+      <div class="footer-co">
+        <ul>
+          <li><a href="/">Trang chủ</a></li>
+          <li><a href="/cauchuyen">Câu chuyện</a></li>
+          <li><a href="/tracaphechung">Trà & Cà phê</a></li>
+          <li><a href="/product/">Sản phẩm</a></li>
+          <li><a href="https://phuclong.com.vn/khuyen-mai">Bảng tin</a></li>
+        </ul>
+      </div>
+      <div class="footer-co">
+        <ul>
+          <li><a href="/contact">Liên hệ</a></li>
+          <li><a href="https://www.google.com/maps/search/Phuc+Long+Coffee+%26+Tea/@21.0254344,105.8328211,13.6z?hl=vi">Cửa hàng</a></li>
+          <li><a href="#">Chính sách đặt hàng</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <li style="font-weight: 700; font-size: 16px;">LIÊN HỆ VỚI CHÚNG TÔI</li>
+          <li>marketing@phuclong.masangroup.com</li>
+          <li>1900 234 518 (Ext.9100/ 9102)</li>
+          <li>Phòng 702, Tầng 7, Tòa nhà Central Plaza, số 17 Lê Duẩn, phường Bến Nghé, quận 1, Hồ Chí Minh</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <span style="font-weight: 700; color: white;  text-transform: none; font-size: 16px;font-family:Montserrat; margin-top: 30px;">Luôn cập nhật về các tin tức và sản phẩm mới</span>
+          <form action="">
+            <input type="email" name="email" id="email" placeholder="Địa chỉ Email">
+            <button  class="btn test-completed">Đăng ký</button>
+          </form>
+          <div class="social-links">
+            <a href="https://www.facebook.com/phuclongcoffeeandtea"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div class="cuoi">© Công ty CP Phúc Long Heritage 2023</div>
+   </footer>
+  </body>
+</html>

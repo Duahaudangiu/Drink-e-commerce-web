@@ -1,0 +1,92 @@
+{% extends "/user/base.html" %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+<div class="products-details">
+    <div class="image-box">
+        <img src="{{ product.picture }}" alt="" width="280px">
+        <div class="sub-img">* Hình ảnh mang tính chất minh họa</div>
+    </div>
+    <div class="main-details">
+        <div class="name">{{ product.name }}</div>
+        <p class="count">Đã bán: {{ product.sell_count }}</p>
+        <hr>
+        <form method="POST" action="/cart/add" class="item-info">
+            <input type="hidden" name="id" value="{{ product.id }}">
+            <table>
+            <tr>
+                <td><label for="size">Kích cỡ:</label></td>
+                <td><select id="size" name="size" oninput="calculatePrice()">
+                    <option value="M">M (+0đ)</option>
+                    <option value="L">L (+5.000đ)</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="sugar_level">Độ ngọt:</label></td>
+                <td><select id="sugar_level" name="sugar_level">
+                    <option value="Ngọt ít">Ngọt ít (+0đ)</option>
+                    <option value="Ngọt nhiều">Ngọt nhiều (+0đ)</option>
+                    <option value="Ngọt bình thường">Ngọt bình thường (+0đ)</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="ice_place">Lựa chọn đá:</label></td>
+                <td><select id="ice_place" name="ice_place">
+                    <option value="Đá chung">Đá chung (+0đ)</option>
+                    <option value="Đá riêng">Đá riêng (+0đ)</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="quantity">Số lượng:</label></td>
+                <td><input type="number" id="quantity" name="quantity" value="1" min="1" oninput="calculatePrice()"></td>
+            </tr>
+            </table>
+            <input type="hidden" id="price" value="{{ product.price }}">
+            <p id="total_price"></p>
+
+            <button data-product="{{ product.id }}" data-action="add" type="submit" id="button_add">
+                Thêm vào giỏ hàng
+            </button>
+        </form>
+    </div>
+</div>
+<div class="related-products">
+    <h2 class="related-products-title">Sản phẩm gợi ý</h2>
+    <div class="product-list2">
+        {% if not recently_viewed_products %}
+            {% for similar_product in similar_products %}
+                {% if similar_product.id != product.id %}
+                <div class="drink-item2">
+                    <div class="drink-product2" data-product-id="{{ similar_product.id }}">
+                        <div class="item-image"><img src="{{ similar_product.picture }}" alt="" width="170px"></div>
+                        <p class="item-name">{{ similar_product.name }}</p>
+                        <p class="price">{{ similar_product.price }}.000đ</p>
+                        <div class="but"><a href="/product/details/{{ similar_product.id }}"><img src="\static\images\but.svg" alt=""></a></div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for recently_viewed_product in recently_viewed_products %}
+                {% if recently_viewed_product.id != product.id %}
+                <div class="drink-item2">
+                    <div class="drink-product2" data-product-id="{{ recently_viewed_product.id }}">
+                        <div class="item-image"><img src="{{ recently_viewed_product.picture }}" alt="" width="170px"></div>
+                        <p class="item-name">{{ recently_viewed_product.name }}</p>
+                        <p class="price">{{ recently_viewed_product.price }}.000đ</p>
+                        <div class="but"><a href="/product/details/{{ recently_viewed_product.id }}"><img src="\static\images\but.svg" alt=""></a></div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,93 @@
+{% extends "/user/base.html" %}
+
+{% block title %}
+Thức uống
+{% endblock %}
+
+{% block content %}
+<div class="slide">
+    <div class="products-imgage"><img src="\static\images/products-image.svg" alt=""></div>
+    <div class="slide-content">
+        <h1 class="slide-title">SẢN PHẨM</h1>
+        <p class="slide-subtitle">Trải qua hơn 50 năm chắt chiu tinh hoa từ những búp trà xanh và hạt cà phê thượng hạng cùng mong muốn mang lại cho khách hàng trải nghiệm giá trị nhất.</p>
+    </div>
+</div>
+
+<div class="section33">
+    <section>
+      <div class="nav-content thucuong">
+        <a href="/product/" class="icon-box"><img src="/static/images/image 101.svg" alt=""><h2>THỨC UỐNG</h2></a>
+      </div>
+      <div class="nav-content anvat">
+        <div class="icon-box"><img src="/static/images/image 102.svg" alt=""><h2>ĂN VẶT</h2></div>
+      </div>
+      <div class="nav-content banh">
+        <div class="icon-box"><img src="/static/images/image 104.svg" alt=""><h2>BÁNH</h2></div>
+      </div>
+      <div class="nav-content donggoi">
+        <div class="icon-box"><img src="/static/images/image 105.svg" alt=""><h2>ĐÓNG GÓI</h2></div>
+      </div>
+    </section>
+    <hr>
+</div>
+
+<div class="main-content">
+    <section>
+        <div class="filterdrink">
+            <a href="/product/" class="drink-title">THỨC UỐNG</a>
+            <div class="filterdrink-contents">
+                {% for drink_type in drink_types %}
+                <a href="/product/{{ drink_type.id }}" class="filterdrink-content">
+                    <div class="filterdrink-icon"><img src="{{ drink_type.picture }}" alt=""></div>
+                    <div class="filter-content">{{ drink_type.name }}</div>
+                </a>
+                {% endfor %}
+            </div>
+            <hr>
+        </div>
+    </section>
+    <main>
+        <form method="POST" action="/product/search" autocomplete="off" class="search-container">
+            <input type="text" name="searchInput" class="search-input" placeholder="Tên sản phẩm...">
+            <button type="submit" class="search-button">Tìm kiếm</button>
+            {% if search_text %}
+                <p>Kết quả tìm kiếm cho: "{{ search_text }}"</p>
+            {% endif %}
+        </form>
+        {% if not search_text %}
+        <div class="sorting">
+            <span class="home-filter__label">Sắp xếp theo</span>
+            <a href="?sort_by=date" class="sorting-btn">Mới nhất</a>
+            <a href="?sort_by=times" class="sorting-btn">Bán chạy</a>
+            <div class="select-input">
+                <span class="select-input__label">Giá</span>
+                <i class="select-input__icon fas fa-angle-down"></i>
+                <ul class="select-input__list">
+                    <li class="select-input__item">
+                        <a href="?sort_order=asc" class="select-input__link">Giá: Thấp đến Cao</a>
+                    </li>
+                    <li class="select-input__item">
+                        <a href="?sort_order=desc" class="select-input__link">Giá: Cao đến Thấp</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        <div class="drink-products">
+            {% for product in data %}
+            <div class="drink-item">
+                <div class="drink-product" data-product-id="{{ product.id }}">
+                    <div class="item-image"><img src="{{ product.picture }}" alt="" width="170px"></div>
+                    <p class="item-name">{{ product.name }}</p>
+                    <p class="price">{{ product.price }}.000₫</p>
+                    <div class="but"><a href="/product/details/{{ product.id }}"><img src="\static\images\but.svg" alt=""></a></div>
+                </div>
+            </div>
+            {% endfor %}
+      </div>
+    </main>
+</div>
+{% endblock %}
+
+
+

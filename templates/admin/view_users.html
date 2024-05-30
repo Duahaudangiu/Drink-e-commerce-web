@@ -1,0 +1,77 @@
+{% extends 'admin/base.html' %}
+{% block title %}
+Users
+{% endblock %}
+{% block content %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Table</a></li>
+                            <li class="breadcrumb-item"><a href="#!">User Table</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12" id="block">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>List of Users</h2>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                        <form method="POST">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="first-row">
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Role</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.id }}</td>
+                                        <td>{{ user.name }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.phone_number }}</td>
+                                        <td>{{ user.role }}</td>
+                                        <td>
+                                            <form action="{{ url_for('delete_user', user_id=user.id) }}" method="post" style="display: inline;">
+                                                <button type="submit"class="delete-button" >Delete</button>
+                                            </form>
+                                                {% if user.role == 'user' and session.current_user.role == 'admin' %}
+                                                    <form action="{{ url_for('update_role', user_id=user.id, new_role='admin') }}" method="post" style="display: inline;">
+                                                        <button type="submit" class="change-button">Make Admin</button>
+                                                    </form>
+                                                {% endif %}
+                                                {% if user.role == 'admin' and session.current_user.role == 'admin' %}
+                                                    <form action="{{ url_for('update_role', user_id=user.id, new_role='user') }}" method="post" style="display: inline;">
+                                                        <button type="submit" class="change-button">Make User</button>
+                                                    </form>
+                                                {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

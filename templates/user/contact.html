@@ -1,0 +1,129 @@
+{% extends "/user/base.html" %}
+
+{% block title %}
+Liên hệ
+{% endblock %}
+
+{% block content %}
+    <div class="slide">
+        <div class="s"><img src="/static/images/image 111.svg" alt=""></div>
+    </div>
+
+    <div class="section1">
+        <div class="d3">
+            <div class="maybay">
+                <img src="/static/images/image 107.svg" alt="">
+            </div>
+             <div class="mb">
+                <img src="/static/images/image 109.svg" alt="">
+             </div>
+        </div>
+
+        <div class="d1">
+            <div class="title-1">PHÚC LONG LẮNG NGHE</div>
+            <div class="sub-title-1">(những ô có đánh dấu  <span style="color:red">  *  </span>   là bắt buộc)</div>
+
+            <form action="/submit_contact" method="POST" id="contactForm" onsubmit="return validateForm()">
+                <div class="row2">
+                    <div class="input-group">
+                        <input type="text" id ="name" name ="name" required>
+                        <label for="name">Họ và tên <span style="color:red">*</span></label>
+
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id ="number" name = "number" required >
+                        <label for="number">Số điện thoại <span style="color:red">*</span></label>
+                    </div>
+                </div>
+
+                <div class="row2">
+                    <div class="input-group">
+                        <select id="dinoselect" name="dinoselect">
+                                <option> <label for="dinoselect">Tỉnh/Thành phố </label></option>
+                                <option>Hà Nội</option>
+                                <option>TP.Hồ Chí Minh</option>
+                                <option>Bắc Ninh</option>
+                                <option>Đà Nẵng</option>
+                                <option>Lào Cai</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id ="shop" name="shop" required>
+                        <label for="shop">Cửa hàng ghé thăm <span style="color:red">*</span></label>
+                    </div>
+                </div>
+
+                <div class="row2">
+                    <div class="input-group" >
+                        <input type="text" id ="tieude" name="tieude" required>
+                        <label for="tieude">Tiêu đề <span style="color:red">*</span></label>
+                    </div>
+                </div>
+
+                <div class="row2">
+                    <div class="input-group2">
+                        <textarea name="message" id="message"  required></textarea>
+                        <label for="message">Nội dung phản hồi <span style="color:red">*</span></label>
+                    </div>
+                </div>
+
+                <button type="submit" class="a"><div class="t">Gửi ý kiến</div></button>
+                <div class="g1">Cảm ơn bạn đã chia sẻ với Phúc Long,
+                    hẹn gặp lại bạn vào một ngày thật gần!
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="d4">
+        <div class="v"></div>
+        <div class="t8"> Liên hệ với chúng tôi.</div>
+        <div class="t2">Phúc Long luôn mong muốn nhận được nhưng phản hồi quý giá của quý khách hàng để có cơ hội hoàn thiện sản phẩm,
+        dịch vụ hơn nữa. Những đóng góp của quý khách hàng luôn là tài sản vô giá đối với chúng tôi.</div>
+        <div class="icon1">
+           <img src="/static/images/image 106.svg" alt="">
+        </div>
+    </div>
+
+    <div class="section-2">
+        <div class="d2">
+            <div class="cangiua">
+                <div class="t3"> VỀ CHÚNG TÔI</div>
+                <div class="logo1">
+                    <img src="/static/logo1.svg" alt="">
+                </div>
+                <div class="anh">
+                    <img src="/static/images/image 110.svg" alt="">
+                </div>
+            </div>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td><img src="/static/images/anh1.svg" alt="">Tên chính thức</td>
+                    <td>CÔNG TY CỔ PHẦN PHÚC LONG HERITAGE</td>
+                </tr>
+                <tr>
+                    <td><img src="/static/images/anh2.svg" alt="">Trụ sở chính</td>
+                    <td>42/24-42/26 Đường 643 Tạ Quang Bửu, Phường 4, Quận 8, Tp.HCM</td>
+                    </tr>
+                <tr>
+                    <td><img src="/static/images/anh3.svg" alt="">Mã số thuế/GPKD</td>
+                    <td>0316 871719</td>
+                </tr>
+                <tr>
+                    <td><img src="/static/images/anh4.svg" alt="">Người đại diện theo pháp luật</td>
+                    <td>Ông Lâm Bội Minh</td>
+                </tr>
+                <tr>
+                    <td><img src="/static/images/anh5.svg" alt="">Điện thoại</td>
+                    <td>(+84 28) 6263 0377 - 62630376</td>
+                </tr>
+                <tr>
+                    <td><img src="/static/images/anh6.svg" alt="">Email</td>
+                    <td>marketing@phuclong.com.vn</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}
+Edit Product
+{% endblock %}
+
+{% block content %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Table</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Product Table</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   <div class="row">
+            <div class="col-xl-12" id="add-cart">
+                <div class="card" >
+                    <div class="card-header-add">
+                        <h2>Edit product</h2>
+                    </div>
+                    <form action="{{ url_for('edit', id=product['id']) }}" method="POST" id="add-content">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name" value="{{product['name'] }}" required><br><br>
+                        <label for="model">Type</label><br>
+                            <select id="model" name="model" required>
+                            {% for type in product_types %}
+                            <option value="{{ type['id'] }}">{{ type['name'] }}</option>
+                            {% endfor %}
+                            </select><br><br>
+                        <label for="picture">Picture</label><br>
+                        <input type="text" id="picture" name="picture" value="{{product['picture'] }}" required><br><br>
+                        <label for="price">Price</label><br>
+                        <input type="text" id="price" name="price" value="{{product['price'] }}" required><br><br>
+                            <button type="submit" class="edit-button" id="but-ton">Save</button>
+                            <button class="edit-button"><a href="/admin/product" id="text-">Cancel</a></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

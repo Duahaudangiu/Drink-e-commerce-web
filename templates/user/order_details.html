@@ -1,0 +1,77 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+Chi tiết đơn hàng {{ order.id }}
+{% endblock %}
+
+{% block content %}
+<h1 class="order-details-title">Chi tiết đơn hàng #{{ order.id }}</h1>
+    <div class="main-order-details">
+        <div class="customer-info">
+            <h2>Thông tin đơn hàng</h2>
+            <table>
+                <tbody>
+                <tr>
+                    <td>Người đặt hàng:</td>
+                    <td>{{ order.name }}</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại:</td>
+                    <td>{{ order.phone_number }}</td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ: </td>
+                    <td>{{ order.address }}</td>
+                </tr>
+                <tr>
+                    <td>Ngày đặt hàng:</td>
+                    <td>{{ order.order_date }}</td>
+                </tr>
+                <tr>
+                    <td>Phương thức thanh toán:</td>
+                    <td>{{ order.payment_method }}</td>
+                </tr>
+                <tr>
+                    <td>Trạng thái đơn hàng:</td>
+                    <td>
+                        {% if order.status_id == 1 %}
+                        Đang thực hiện
+                        {% elif order.status_id == 2 %}
+                        Đã hoàn tất
+                        {% else %}
+                        Đã hủy
+                        {% endif %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="order-item-info">
+            <h2>Sản phẩm trong đơn hàng</h2>
+            <table class="cart">
+                <tr>
+                <th></th>
+                <th class="product">SẢN PHẨM</th>
+                <th>SỐ LƯỢNG</th>
+                <th>THÀNH TIỀN</th>
+            </tr>
+            {% for i in range(order_items|length) %}
+                {% set item = order_items[i] %}
+                {% set image = images[i] %}
+            <tr>
+                <td><img class="product-img" src="{{ image }}" alt=""></td>
+                <td class="product"><h4>{{ item.product_name }}</h4>
+                    <br>{{ item.feature }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.total_price }}00₫</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td> <td></td> <td>Tổng:</td> <td id="total_price">{{ order.total_price }}00₫</td>
+            </tr>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
